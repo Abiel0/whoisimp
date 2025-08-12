@@ -1,0 +1,1050 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who is the Imposter? | ആരാണ് വഞ്ചകൻ?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: clamp(1.8em, 5vw, 2.5em);
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: clamp(0.9em, 3vw, 1.1em);
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            font-size: 0.9em;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: clamp(0.9em, 3vw, 1em);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-top: 10px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .question-text {
+            font-size: clamp(1.1em, 4vw, 1.3em);
+            font-weight: 600;
+            color: #333;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .imposter-question {
+            border-left-color: #e74c3c;
+            background: #fdf2f2;
+        }
+
+        .players-list {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .player-item {
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            margin: 8px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .player-item span:first-child {
+            font-weight: 600;
+            word-break: break-word;
+            max-width: 60%;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .status-waiting {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-ready {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .game-id {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: clamp(1em, 4vw, 1.2em);
+            font-weight: bold;
+            margin: 15px 0;
+            letter-spacing: 1px;
+            word-break: break-all;
+        }
+
+        .reveal-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e1e5e9;
+        }
+
+        .correct-answer {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: clamp(1em, 3.5vw, 1.2em);
+            font-weight: 600;
+            margin: 15px 0;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .round-counter {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+            font-size: clamp(0.9em, 3vw, 1em);
+        }
+
+        .reveal-section p {
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.6;
+            font-size: clamp(0.9em, 3vw, 1em);
+            text-align: left;
+            padding: 0 5px;
+        }
+
+        .players-list h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: clamp(1em, 3.5vw, 1.1em);
+        }
+
+        .reveal-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: clamp(1em, 3.5vw, 1.1em);
+        }
+
+        /* Tablet specific styles */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .container {
+                padding: 30px;
+                max-width: 600px;
+            }
+            
+            .language-toggle {
+                top: 20px;
+                right: 20px;
+                padding: 10px 15px;
+            }
+            
+            .player-item {
+                padding: 15px;
+            }
+            
+            .question-card {
+                padding: 25px;
+            }
+        }
+
+        /* Mobile specific styles */
+        @media (max-width: 767px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                padding: 15px;
+                margin: 5px;
+                border-radius: 15px;
+                min-height: calc(100vh - 10px);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            
+            .language-toggle {
+                position: static;
+                margin: 0 auto 15px auto;
+                display: inline-block;
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .subtitle {
+                margin-bottom: 15px;
+                padding: 0;
+            }
+            
+            .input-group {
+                margin-bottom: 12px;
+            }
+            
+            input, button {
+                padding: 12px 15px;
+                min-height: 48px;
+            }
+            
+            .question-card {
+                padding: 15px;
+                margin: 10px 0;
+            }
+            
+            .players-list {
+                padding: 12px;
+                margin: 10px 0;
+            }
+            
+            .player-item {
+                padding: 10px;
+                margin: 6px 0;
+                font-size: 0.95em;
+            }
+            
+            .player-item span:first-child {
+                max-width: 55%;
+            }
+            
+            .status-badge {
+                font-size: 0.8em;
+                padding: 4px 8px;
+            }
+            
+            .game-id {
+                padding: 12px;
+                font-size: 1em;
+                letter-spacing: 0.5px;
+            }
+            
+            .round-counter {
+                padding: 6px 12px;
+                margin-bottom: 10px;
+            }
+            
+            .reveal-section {
+                margin-top: 15px;
+                padding-top: 15px;
+            }
+            
+            .correct-answer {
+                padding: 12px;
+                margin: 10px 0;
+            }
+            
+            .reveal-section p {
+                padding: 0;
+                margin-top: 10px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .player-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .player-item span:first-child {
+                max-width: 100%;
+            }
+            
+            .status-badge {
+                align-self: flex-end;
+            }
+        }
+
+        /* Landscape orientation on mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                margin: 2px;
+                padding: 10px;
+                min-height: calc(100vh - 4px);
+            }
+            
+            .logo {
+                font-size: 1.5em;
+                margin-bottom: 8px;
+            }
+            
+            .subtitle {
+                margin-bottom: 10px;
+                font-size: 0.9em;
+            }
+            
+            .input-group {
+                margin-bottom: 8px;
+            }
+            
+            .question-card, .players-list {
+                padding: 10px;
+                margin: 8px 0;
+            }
+        }
+
+        /* Touch-friendly adjustments */
+        @media (pointer: coarse) {
+            button {
+                min-height: 48px;
+                padding: 12px 20px;
+            }
+            
+            input {
+                min-height: 48px;
+                font-size: 16px;
+            }
+            
+            .language-toggle {
+                min-height: 40px;
+                min-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="language-toggle" onclick="toggleLanguage()" id="langToggle">മലയാളം</button>
+
+        <!-- Home Screen -->
+        <div id="homeScreen">
+            <div class="logo" data-en="🕵️ Who's the Imposter?" data-ml="🕵️ ആരാണ് വഞ്ചകൻ?">🕵️ Who's the Imposter?</div>
+            <p class="subtitle" data-en="Connect with friends and find the imposter among you!" data-ml="സുഹൃത്തുക്കളുമായി ബന്ധിപ്പിച്ച് നിങ്ങളുടെ ഇടയിലെ വഞ്ചകനെ കണ്ടെത്തുക!">Connect with friends and find the imposter among you!</p>
+            
+            <div class="input-group">
+                <label for="playerName" data-en="Your Name:" data-ml="നിങ്ങളുടെ പേര്:">Your Name:</label>
+                <input type="text" id="playerName" data-en-placeholder="Enter your name" data-ml-placeholder="നിങ്ങളുടെ പേര് നൽകുക" placeholder="Enter your name" maxlength="20">
+            </div>
+            
+            <button onclick="createGame()" data-en="Create New Game" data-ml="പുതിയ ഗെയിം സൃഷ്ടിക്കുക">Create New Game</button>
+            <button onclick="showJoinForm()" data-en="Join Existing Game" data-ml="നിലവിലുള്ള ഗെയിമിൽ ചേരുക">Join Existing Game</button>
+            
+            <div id="joinForm" class="hidden" style="margin-top: 20px;">
+                <div class="input-group">
+                    <label for="gameId" data-en="Game ID:" data-ml="ഗെയിം ഐഡി:">Game ID:</label>
+                    <input type="text" id="gameId" data-en-placeholder="Enter 4-digit game ID" data-ml-placeholder="4 അക്ക ഗെയിം ഐഡി നൽകുക" placeholder="Enter 4-digit game ID" maxlength="4">
+                </div>
+                <button onclick="joinGame()" data-en="Join Game" data-ml="ഗെയിമിൽ ചേരുക">Join Game</button>
+            </div>
+        </div>
+
+        <!-- Lobby Screen -->
+        <div id="lobbyScreen" class="hidden">
+            <div class="logo" data-en="🎮 Game Lobby" data-ml="🎮 ഗെയിം ലോബി">🎮 Game Lobby</div>
+            <div class="round-counter" id="roundCounter">Round 1</div>
+            <div class="game-id"><span data-en="Game ID:" data-ml="ഗെയിം ഐഡി:">Game ID:</span> <span id="displayGameId"></span></div>
+            <p class="subtitle" data-en="Share this ID with your friends!" data-ml="ഈ ഐഡി നിങ്ങളുടെ സുഹൃത്തുക്കളുമായി പങ്കിടുക!">Share this ID with your friends!</p>
+            
+            <div class="players-list">
+                <h3 style="margin-bottom: 15px; color: #333;"><span data-en="Players" data-ml="കളിക്കാർ">Players</span> (<span id="playerCount">0</span>/4):</h3>
+                <div id="playersList"></div>
+            </div>
+            
+            <button id="startGameBtn" onclick="startGame()" disabled="" data-en="Start Game" data-ml="ഗെയിം ആരംഭിക്കുക">Start Game</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="hidden">
+            <div class="logo" data-en="🎯 Your Question" data-ml="🎯 നിങ്ങളുടെ ചോദ്യം">🎯 Your Question</div>
+            <div class="round-counter" id="gameRoundCounter">Round 1</div>
+            
+            <div id="questionCard" class="question-card">
+                <div class="question-text" id="questionText"></div>
+            </div>
+            
+            <button id="answerBtn" onclick="markAnswered()" data-en="I Have an Answer!" data-ml="എനിക്ക് ഉത്തരമുണ്ട്!">I Have an Answer!</button>
+            
+            <div class="players-list">
+                <h3 style="margin-bottom: 15px; color: #333;" data-en="Player Status:" data-ml="കളിക്കാരുടെ അവസ്ഥ:">Player Status:</h3>
+                <div id="gamePlayersList"></div>
+            </div>
+        </div>
+
+        <!-- Reveal Screen -->
+        <div id="revealScreen" class="hidden">
+            <div class="logo" data-en="🎭 Time to Reveal!" data-ml="🎭 വെളിപ്പെടുത്താനുള്ള സമയം!">🎭 Time to Reveal!</div>
+            <div class="round-counter" id="revealRoundCounter">Round 1</div>
+            
+            <div class="reveal-section">
+                <h3 style="color: #333; margin-bottom: 15px;" data-en="The Real Question Was:" data-ml="യഥാർത്ഥ ചോദ്യം ഇതായിരുന്നു:">The Real Question Was:</h3>
+                <div class="correct-answer" id="realQuestion"></div>
+                
+                <p style="color: #666; margin-top: 20px; line-height: 1.6;" data-en="Now discuss your answers in person! The imposter had a different question and must convince everyone their answer makes sense. Vote for who you think is the imposter!" data-ml="ഇപ്പോൾ നിങ്ങളുടെ ഉത്തരങ്ങൾ നേരിട്ട് ചർച്ച ചെയ്യുക! വഞ്ചകന് വ്യത്യസ്തമായ ചോദ്യം ഉണ്ടായിരുന്നു, അവരുടെ ഉത്തരം അർത്ഥപൂർണ്ണമാണെന്ന് എല്ലാവരേയും ബോധ്യപ്പെടുത്തണം. ആരാണ് വഞ്ചകനെന്ന് നിങ്ങൾ കരുതുന്നുവെന്ന് വോട്ട് ചെയ്യുക!">Now discuss your answers in person! The imposter had a different question and must convince everyone their answer makes sense. Vote for who you think is the imposter!</p>
+                
+                <button onclick="playAgain()" style="margin-top: 30px;" data-en="Play Again" data-ml="വീണ്ടും കളിക്കുക">Play Again</button>
+                <button onclick="newGame()" style="margin-top: 10px; background: #6c757d;" data-en="Leave Game" data-ml="ഗെയിം വിടുക">Leave Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language system
+        let currentLanguage = 'en';
+        
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'ml' : 'en';
+            updateLanguage();
+        }
+        
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(element => {
+                const text = element.getAttribute(`data-${currentLanguage}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            const inputs = document.querySelectorAll('[data-en-placeholder]');
+            inputs.forEach(input => {
+                const placeholder = input.getAttribute(`data-${currentLanguage}-placeholder`);
+                if (placeholder) {
+                    input.placeholder = placeholder;
+                }
+            });
+            
+            document.getElementById('langToggle').textContent = currentLanguage === 'en' ? 'മലയാളം' : 'English';
+            
+            // Update status badges
+            updateStatusBadges();
+        }
+        
+        function updateStatusBadges() {
+            const readyText = currentLanguage === 'en' ? 'Ready' : 'തയ്യാർ';
+            const answeredText = currentLanguage === 'en' ? 'Answered' : 'ഉത്തരം നൽകി';
+            const thinkingText = currentLanguage === 'en' ? 'Thinking...' : 'ചിന്തിക്കുന്നു...';
+            
+            document.querySelectorAll('.status-ready').forEach(badge => {
+                if (badge.textContent === 'Ready' || badge.textContent === 'തയ്യാർ') {
+                    badge.textContent = readyText;
+                } else if (badge.textContent === 'Answered' || badge.textContent === 'ഉത്തരം നൽകി') {
+                    badge.textContent = answeredText;
+                }
+            });
+            
+            document.querySelectorAll('.status-waiting').forEach(badge => {
+                if (badge.textContent === 'Thinking...' || badge.textContent === 'ചിന്തിക്കുന്നു...') {
+                    badge.textContent = thinkingText;
+                }
+            });
+        }
+
+        // Game state
+        let gameState = {
+            gameId: null,
+            playerName: null,
+            isHost: false,
+            players: [],
+            currentQuestion: null,
+            isImposter: false,
+            currentRound: 1
+        };
+
+        // Question sets with Malayalam translations
+        const questionSets = [
+            {
+                real: {
+                    en: "What's your favorite pizza topping?",
+                    ml: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പിസ്സ ടോപ്പിംഗ് എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's your favorite ice cream flavor?",
+                    ml: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഐസ്ക്രീം രുചി എന്താണ്?"
+                }
+            },
+            {
+                real: {
+                    en: "What's the best vacation destination?",
+                    ml: "ഏറ്റവും മികച്ച അവധിക്കാല സ്ഥലം എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's the best breakfast food?",
+                    ml: "ഏറ്റവും മികച്ച പ്രാതൽ ഭക്ഷണം എന്താണ്?"
+                }
+            },
+            {
+                real: {
+                    en: "What's your favorite movie genre?",
+                    ml: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സിനിമാ വിഭാഗം എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's your favorite type of music?",
+                    ml: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സംഗീത വിഭാഗം എന്താണ്?"
+                }
+            },
+            {
+                real: {
+                    en: "What's the best way to spend a rainy day?",
+                    ml: "മഴയുള്ള ദിവസം ചെലവഴിക്കാനുള്ള ഏറ്റവും നല്ല വഴി എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's the best way to stay cool in summer?",
+                    ml: "വേനൽക്കാലത്ത് തണുപ്പ് നിലനിർത്താനുള്ള ഏറ്റവും നല്ല വഴി എന്താണ്?"
+                }
+            },
+            {
+                real: {
+                    en: "What's your favorite childhood memory?",
+                    ml: "നിങ്ങളുടെ പ്രിയപ്പെട്ട കുട്ടിക്കാല ഓർമ്മ എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's your biggest fear?",
+                    ml: "നിങ്ങളുടെ ഏറ്റവും വലിയ ഭയം എന്താണ്?"
+                }
+            },
+            {
+                real: {
+                    en: "What superpower would you want?",
+                    ml: "ഏത് അമാനുഷിക ശക്തിയാണ് നിങ്ങൾക്ക് വേണ്ടത്?"
+                },
+                imposter: {
+                    en: "What animal would you want as a pet?",
+                    ml: "ഏത് മൃഗത്തെയാണ് നിങ്ങൾ വളർത്തുമൃഗമായി ആഗ്രഹിക്കുന്നത്?"
+                }
+            },
+            {
+                real: {
+                    en: "What's the best board game?",
+                    ml: "ഏറ്റവും മികച്ച ബോർഡ് ഗെയിം എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's the best video game?",
+                    ml: "ഏറ്റവും മികച്ച വീഡിയോ ഗെയിം എന്താണ്?"
+                }
+            },
+            {
+                real: {
+                    en: "What's your dream job?",
+                    ml: "നിങ്ങളുടെ സ്വപ്ന ജോലി എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's your biggest accomplishment?",
+                    ml: "നിങ്ങളുടെ ഏറ്റവും വലിയ നേട്ടം എന്താണ്?"
+                }
+            },
+            {
+                real: {
+                    en: "What's your favorite season?",
+                    ml: "നിങ്ങളുടെ പ്രിയപ്പെട്ട കാലാവസ്ഥ എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's your favorite color?",
+                    ml: "നിങ്ങളുടെ പ്രിയപ്പെട്ട നിറം എന്താണ്?"
+                }
+            },
+            {
+                real: {
+                    en: "What's the best hobby to have?",
+                    ml: "ഏറ്റവും മികച്ച ഹോബി എന്താണ്?"
+                },
+                imposter: {
+                    en: "What's the best sport to watch?",
+                    ml: "കാണാൻ ഏറ്റവും മികച്ച കായിക വിനോദം എന്താണ്?"
+                }
+            }
+        ];
+
+        // Local storage simulation
+        function saveGameData(gameId, data) {
+            localStorage.setItem(`game_${gameId}`, JSON.stringify(data));
+            window.dispatchEvent(new StorageEvent('storage', {
+                key: `game_${gameId}`,
+                newValue: JSON.stringify(data)
+            }));
+        }
+
+        function getGameData(gameId) {
+            const data = localStorage.getItem(`game_${gameId}`);
+            return data ? JSON.parse(data) : null;
+        }
+
+        window.addEventListener('storage', function(e) {
+            if (e.key && e.key.startsWith('game_') && e.newValue) {
+                const gameId = e.key.replace('game_', '');
+                if (gameId === gameState.gameId) {
+                    updateGameFromStorage();
+                }
+            }
+        });
+
+        function updateGameFromStorage() {
+            const data = getGameData(gameState.gameId);
+            if (data) {
+                gameState.players = data.players || [];
+                gameState.currentRound = data.currentRound || 1;
+                
+                const currentScreen = getCurrentScreen();
+                
+                // Handle transition back to lobby (when host clicks "Play Again")
+                if (!data.gameStarted && !data.allAnswered && currentScreen === 'revealScreen') {
+                    showLobby();
+                    return;
+                }
+                
+                updateLobby();
+                updateGameScreen();
+                updateRoundCounters();
+                
+                if (data.gameStarted && currentScreen === 'lobbyScreen') {
+                    showGameScreen(data.questions);
+                }
+                
+                if (data.allAnswered && currentScreen === 'gameScreen') {
+                    showRevealScreen(data.realQuestion);
+                }
+            }
+        }
+
+        function getCurrentScreen() {
+            const screens = ['homeScreen', 'lobbyScreen', 'gameScreen', 'revealScreen'];
+            for (let screen of screens) {
+                if (!document.getElementById(screen).classList.contains('hidden')) {
+                    return screen;
+                }
+            }
+            return null;
+        }
+
+        function generateGameId() {
+            return Math.floor(1000 + Math.random() * 9000).toString();
+        }
+
+        function showJoinForm() {
+            document.getElementById('joinForm').classList.remove('hidden');
+        }
+
+        function createGame() {
+            const name = document.getElementById('playerName').value.trim();
+            if (!name) {
+                const alertMsg = currentLanguage === 'en' ? 'Please enter your name!' : 'ദയവായി നിങ്ങളുടെ പേര് നൽകുക!';
+                alert(alertMsg);
+                return;
+            }
+
+            gameState.gameId = generateGameId();
+            gameState.playerName = name;
+            gameState.isHost = true;
+            gameState.currentRound = 1;
+            gameState.players = [{
+                name: name,
+                answered: false
+            }];
+
+            const gameData = {
+                players: gameState.players,
+                gameStarted: false,
+                currentRound: 1
+            };
+
+            saveGameData(gameState.gameId, gameData);
+            showLobby();
+        }
+
+        function joinGame() {
+            const name = document.getElementById('playerName').value.trim();
+            const gameId = document.getElementById('gameId').value.trim();
+            
+            if (!name || !gameId) {
+                const alertMsg = currentLanguage === 'en' ? 'Please enter both your name and game ID!' : 'ദയവായി നിങ്ങളുടെ പേരും ഗെയിം ഐഡിയും നൽകുക!';
+                alert(alertMsg);
+                return;
+            }
+
+            const gameData = getGameData(gameId);
+            if (!gameData) {
+                const alertMsg = currentLanguage === 'en' ? 'Game not found! Please check the Game ID.' : 'ഗെയിം കണ്ടെത്തിയില്ല! ഗെയിം ഐഡി പരിശോധിക്കുക.';
+                alert(alertMsg);
+                return;
+            }
+
+            if (gameData.players.length >= 4) {
+                const alertMsg = currentLanguage === 'en' ? 'This game is full!' : 'ഈ ഗെയിം നിറഞ്ഞിരിക്കുന്നു!';
+                alert(alertMsg);
+                return;
+            }
+
+            if (gameData.gameStarted) {
+                const alertMsg = currentLanguage === 'en' ? 'This game has already started!' : 'ഈ ഗെയിം ഇതിനകം ആരംഭിച്ചിരിക്കുന്നു!';
+                alert(alertMsg);
+                return;
+            }
+
+            gameState.gameId = gameId;
+            gameState.playerName = name;
+            gameState.isHost = false;
+            gameState.currentRound = gameData.currentRound || 1;
+
+            gameData.players.push({
+                name: name,
+                answered: false
+            });
+
+            gameState.players = gameData.players;
+            saveGameData(gameId, gameData);
+            showLobby();
+        }
+
+        function showLobby() {
+            // Hide all screens first
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('gameScreen').classList.add('hidden');
+            document.getElementById('revealScreen').classList.add('hidden');
+            
+            // Show lobby screen
+            document.getElementById('lobbyScreen').classList.remove('hidden');
+            document.getElementById('displayGameId').textContent = gameState.gameId;
+            updateLobby();
+            updateRoundCounters();
+        }
+
+        function updateLobby() {
+            const playersList = document.getElementById('playersList');
+            const playerCount = document.getElementById('playerCount');
+            const startBtn = document.getElementById('startGameBtn');
+
+            playersList.innerHTML = '';
+            const readyText = currentLanguage === 'en' ? 'Ready' : 'തയ്യാർ';
+            
+            gameState.players.forEach(player => {
+                const playerDiv = document.createElement('div');
+                playerDiv.className = 'player-item';
+                playerDiv.innerHTML = `
+                    <span>${player.name}</span>
+                    <span class="status-badge status-ready">${readyText}</span>
+                `;
+                playersList.appendChild(playerDiv);
+            });
+
+            playerCount.textContent = gameState.players.length;
+            
+            if (gameState.isHost) {
+                const needPlayersText = currentLanguage === 'en' ? 'Need at least 2 players' : 'കുറഞ്ഞത് 2 കളിക്കാർ ആവശ്യം';
+                const startGameText = currentLanguage === 'en' ? 'Start Game' : 'ഗെയിം ആരംഭിക്കുക';
+                
+                startBtn.disabled = gameState.players.length < 2;
+                startBtn.textContent = gameState.players.length < 2 ? needPlayersText : startGameText;
+            } else {
+                const waitingText = currentLanguage === 'en' ? 'Waiting for host to start...' : 'ഹോസ്റ്റ് ആരംഭിക്കാൻ കാത്തിരിക്കുന്നു...';
+                startBtn.textContent = waitingText;
+                startBtn.disabled = true;
+            }
+        }
+
+        function updateRoundCounters() {
+            const roundText = currentLanguage === 'en' ? 'Round' : 'റൗണ്ട്';
+            const roundDisplay = `${roundText} ${gameState.currentRound}`;
+            
+            document.getElementById('roundCounter').textContent = roundDisplay;
+            document.getElementById('gameRoundCounter').textContent = roundDisplay;
+            document.getElementById('revealRoundCounter').textContent = roundDisplay;
+        }
+
+        function startGame() {
+            if (!gameState.isHost || gameState.players.length < 2) return;
+
+            const questionSet = questionSets[Math.floor(Math.random() * questionSets.length)];
+            const imposterIndex = Math.floor(Math.random() * gameState.players.length);
+            
+            const questions = gameState.players.map((player, index) => ({
+                playerName: player.name,
+                question: index === imposterIndex ? questionSet.imposter[currentLanguage] : questionSet.real[currentLanguage],
+                isImposter: index === imposterIndex
+            }));
+
+            const gameData = getGameData(gameState.gameId);
+            gameData.gameStarted = true;
+            gameData.questions = questions;
+            gameData.realQuestion = questionSet.real[currentLanguage];
+            gameData.imposterQuestion = questionSet.imposter[currentLanguage];
+
+            saveGameData(gameState.gameId, gameData);
+            showGameScreen(questions);
+        }
+
+        function showGameScreen(questions) {
+            document.getElementById('lobbyScreen').classList.add('hidden');
+            document.getElementById('gameScreen').classList.remove('hidden');
+
+            const playerQuestion = questions.find(q => q.playerName === gameState.playerName);
+            if (playerQuestion) {
+                gameState.currentQuestion = playerQuestion.question;
+                gameState.isImposter = playerQuestion.isImposter;
+                
+                document.getElementById('questionText').textContent = playerQuestion.question;
+                
+                const questionCard = document.getElementById('questionCard');
+                questionCard.classList.remove('imposter-question');
+                if (playerQuestion.isImposter) {
+                    questionCard.classList.add('imposter-question');
+                }
+            }
+
+            // Reset answer button
+            const answerBtn = document.getElementById('answerBtn');
+            answerBtn.disabled = false;
+            answerBtn.textContent = currentLanguage === 'en' ? 'I Have an Answer!' : 'എനിക്ക് ഉത്തരമുണ്ട്!';
+
+            updateGameScreen();
+        }
+
+        function updateGameScreen() {
+            const gamePlayersList = document.getElementById('gamePlayersList');
+            gamePlayersList.innerHTML = '';
+            
+            const answeredText = currentLanguage === 'en' ? 'Answered' : 'ഉത്തരം നൽകി';
+            const thinkingText = currentLanguage === 'en' ? 'Thinking...' : 'ചിന്തിക്കുന്നു...';
+            
+            gameState.players.forEach(player => {
+                const playerDiv = document.createElement('div');
+                playerDiv.className = 'player-item';
+                const statusClass = player.answered ? 'status-ready' : 'status-waiting';
+                const statusText = player.answered ? answeredText : thinkingText;
+                
+                playerDiv.innerHTML = `
+                    <span>${player.name}</span>
+                    <span class="status-badge ${statusClass}">${statusText}</span>
+                `;
+                gamePlayersList.appendChild(playerDiv);
+            });
+        }
+
+        function markAnswered() {
+            const gameData = getGameData(gameState.gameId);
+            
+            const playerIndex = gameData.players.findIndex(p => p.name === gameState.playerName);
+            if (playerIndex !== -1) {
+                gameData.players[playerIndex].answered = true;
+                gameState.players = gameData.players;
+                
+                const allAnswered = gameData.players.every(p => p.answered);
+                if (allAnswered) {
+                    gameData.allAnswered = true;
+                }
+                
+                saveGameData(gameState.gameId, gameData);
+                
+                const answerBtn = document.getElementById('answerBtn');
+                answerBtn.disabled = true;
+                answerBtn.textContent = currentLanguage === 'en' ? 'Answer Submitted!' : 'ഉത്തരം സമർപ്പിച്ചു!';
+                
+                if (allAnswered) {
+                    setTimeout(() => {
+                        showRevealScreen(gameData.realQuestion);
+                    }, 1000);
+                }
+            }
+        }
+
+        function showRevealScreen(realQuestion) {
+            document.getElementById('gameScreen').classList.add('hidden');
+            document.getElementById('revealScreen').classList.remove('hidden');
+            document.getElementById('realQuestion').textContent = realQuestion;
+        }
+
+        function playAgain() {
+            if (!gameState.isHost) {
+                const alertMsg = currentLanguage === 'en' ? 'Only the host can start a new round!' : 'പുതിയ റൗണ്ട് ആരംഭിക്കാൻ ഹോസ്റ്റിന് മാത്രമേ കഴിയൂ!';
+                alert(alertMsg);
+                return;
+            }
+
+            // Reset player answered status
+            gameState.players.forEach(player => {
+                player.answered = false;
+            });
+
+            // Increment round
+            gameState.currentRound++;
+
+            const gameData = getGameData(gameState.gameId);
+            gameData.players = gameState.players;
+            gameData.currentRound = gameState.currentRound;
+            gameData.gameStarted = false;
+            gameData.allAnswered = false;
+            delete gameData.questions;
+            delete gameData.realQuestion;
+            delete gameData.imposterQuestion;
+
+            saveGameData(gameState.gameId, gameData);
+            showLobby();
+        }
+
+        function newGame() {
+            // Clear the current game from storage
+            if (gameState.gameId) {
+                localStorage.removeItem(`game_${gameState.gameId}`);
+            }
+            
+            // Reset game state
+            gameState = {
+                gameId: null,
+                playerName: null,
+                isHost: false,
+                players: [],
+                currentQuestion: null,
+                isImposter: false,
+                currentRound: 1
+            };
+            
+            // Clear form inputs
+            document.getElementById('playerName').value = '';
+            document.getElementById('gameId').value = '';
+            document.getElementById('joinForm').classList.add('hidden');
+            
+            // Show home screen
+            document.getElementById('revealScreen').classList.add('hidden');
+            document.getElementById('homeScreen').classList.remove('hidden');
+        }
+
+        // Periodically check for game updates
+        setInterval(updateGameFromStorage, 1000);
+
+        // Initialize language on page load
+        updateLanguage();
+    </script>
+
+
+</body></html>
