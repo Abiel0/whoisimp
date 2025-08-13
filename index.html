@@ -478,7 +478,8 @@
                 langToggle: "മലയാളം",
                 playerPlaceholder: "Player",
                 finalTitle: "The Real Question Was:",
-                haveAnswer: "I have an answer"
+                haveAnswer: "I have an answer",
+                endGame: "End Game"
             },
             ml: {
                 mainTitle: "ആരാണ് വഞ്ചകൻ?",
@@ -494,7 +495,8 @@
                 langToggle: "English",
                 playerPlaceholder: "കളിക്കാരൻ",
                 finalTitle: "യഥാർത്ഥ ചോദ്യം ഇതായിരുന്നു:",
-                haveAnswer: "എനിക്ക് ഉത്തരം ഉണ്ട്"
+                haveAnswer: "എനിക്ക് ഉത്തരം ഉണ്ട്",
+                endGame: "കളി അവസാനിപ്പിക്കുക"
             }
         };
 
@@ -741,24 +743,25 @@
                 document.getElementById('imposterReveal').style.display = 'block';
             }
             
-            // Show "I have an answer" button instead of navigation buttons
+            // Show "I have an answer" button
             const navigation = document.querySelector('.navigation');
-            navigation.innerHTML = '<button class="next-btn" onclick="showAnswerButtons()">I have an answer</button>';
+            const lang = translations[currentLanguage];
+            navigation.innerHTML = `<button class="next-btn" onclick="showAnswerButtons()">${lang.haveAnswer}</button>`;
         }
-
         function showAnswerButtons() {
             const navigation = document.querySelector('.navigation');
+            const lang = translations[currentLanguage];
             navigation.innerHTML = '';
             
             if (currentPlayer < totalPlayers) {
-                navigation.innerHTML = '<button class="next-btn" id="nextBtn" onclick="nextPlayer()">Next Player</button>';
+                navigation.innerHTML = `<button class="next-btn" id="nextBtn" onclick="nextPlayer()">${lang.nextPlayer}</button>`;
             } else {
-                // Last player - show final screen
-                showFinalScreen();
-                return;
+                // Last player - show end game button
+                navigation.innerHTML = `<button class="next-btn" onclick="endGame()">${lang.endGame}</button>`;
             }
         }
 
+        
 
 
         function nextPlayer() {
@@ -807,6 +810,11 @@
             document.querySelectorAll('.player-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('startBtn').disabled = true;
         }
+
+        function endGame() {
+            showFinalScreen();
+        }
+
 
         // Initialize language on load
         updateLanguage();
