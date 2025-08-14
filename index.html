@@ -501,121 +501,97 @@
         };
 
         const gameQuestions = {
-            3: [
-                {
-                    en: {
-                        normal: "What's your favorite pizza topping?",
-                        imposter: "What's your favorite ice cream flavor?"
-                    },
-                    ml: {
-                        normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പിസ്സാ ടോപ്പിംഗ് എന്താണ്?",
-                        imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഐസ് ക്രീം ഫ്ലേവർ എന്താണ്?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What's the best way to spend a weekend?",
-                        imposter: "What's your morning routine?"
-                    },
-                    ml: {
-                        normal: "വാരാന്ത്യം എങ്ങനെ ചെലവഴിക്കുന്നതാണ് നല്ലത്?",
-                        imposter: "നിങ്ങളുടെ പ്രഭാത ദിനചര്യ എന്താണ്?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What superpower would you choose?",
-                        imposter: "What's your biggest fear?"
-                    },
-                    ml: {
-                        normal: "ഏത് അതിമാനുഷിക ശക്തിയാണ് നിങ്ങൾ തിരഞ്ഞെടുക്കുക?",
-                        imposter: "നിങ്ങളുടെ ഏറ്റവും വലിയ ഭയം എന്താണ്?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What's your dream vacation destination?",
-                        imposter: "What's your favorite childhood memory?"
-                    },
-                    ml: {
-                        normal: "നിങ്ങളുടെ സ്വപ്ന അവധിക്കാല സ്ഥലം എവിടെയാണ്?",
-                        imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ബാല്യകാല ഓർമ്മ എന്താണ്?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What's the most important quality in a friend?",
-                        imposter: "What's your favorite season of the year?"
-                    },
-                    ml: {
-                        normal: "ഒരു സുഹൃത്തിൽ ഏറ്റവും പ്രധാനപ്പെട്ട ഗുണം എന്താണ്?",
-                        imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഋതു എതാണ്?"
-                    }
-                }
-            ],
-            4: [
-                {
-                    en: {
-                        normal: "What's your favorite movie genre?",
-                        imposter: "What's your favorite book genre?"
-                    },
-                    ml: {
-                        normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സിനിമാ വിഭാഗം എന്താണ്?",
-                        imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പുസ്തക വിഭാഗം എന്താണ്?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What's your ideal way to exercise?",
-                        imposter: "What's your favorite way to relax?"
-                    },
-                    ml: {
-                        normal: "വ്യായാമം ചെയ്യാനുള്ള നിങ്ങളുടെ അനുയോജ്യമായ മാർഗം എന്താണ്?",
-                        imposter: "വിശ്രമിക്കാനുള്ള നിങ്ങളുടെ പ്രിയപ്പെട്ട മാർഗം എന്താണ്?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What technology can't you live without?",
-                        imposter: "What food can't you live without?"
-                    },
-                    ml: {
-                        normal: "ഏത് സാങ്കേതികവിദ്യയില്ലാതെ നിങ്ങൾക്ക് ജീവിക്കാനാവില്ല?",
-                        imposter: "ഏത് ഭക്ഷണമില്ലാതെ നിങ്ങൾക്ക് ജീവിക്കാനാവില്ല?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What's your biggest pet peeve?",
-                        imposter: "What's your biggest accomplishment?"
-                    },
-                    ml: {
-                        normal: "നിങ്ങളെ ഏറ്റവും കൂടുതൽ ശല്യപ്പെടുത്തുന്ന കാര്യം എന്താണ്?",
-                        imposter: "നിങ്ങളുടെ ഏറ്റവും വലിയ നേട്ടം എന്താണ്?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What's your favorite way to celebrate?",
-                        imposter: "What's your favorite way to learn something new?"
-                    },
-                    ml: {
-                        normal: "ആഘോഷിക്കാനുള്ള നിങ്ങളുടെ പ്രിയപ്പെട്ട മാർഗം എന്താണ്?",
-                        imposter: "പുതിയ എന്തെങ്കിലും പഠിക്കാനുള്ള നിങ്ങളുടെ പ്രിയപ്പെട്ട മാർഗം എന്താണ്?"
-                    }
-                },
-                {
-                    en: {
-                        normal: "What motivates you the most?",
-                        imposter: "What stresses you the most?"
-                    },
-                    ml: {
-                        normal: "നിങ്ങളെ ഏറ്റവും കൂടുതൽ പ്രേരിപ്പിക്കുന്നത് എന്താണ്?",
-                        imposter: "നിങ്ങളെ ഏറ്റവും കൂടുതൽ സമ്മർദ്ദത്തിലാക്കുന്നത് എന്താണ്?"
-                    }
-                }
-            ]
-        };
+    3: [
+        { en: { normal: "How many hours of sleep do you usually get?", imposter: "How many cups of tea do you drink daily?" }, ml: { normal: "സാധാരണയായി നിങ്ങൾ എത്ര മണിക്കൂർ ഉറങ്ങാറുണ്ട്?", imposter: "നിങ്ങൾ ദിവസം എത്ര കപ്പ് ചായ കുടിക്കാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite fruit?", imposter: "What's your favorite vegetable?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പഴം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പച്ചക്കറി ഏതാണ്?" } },
+        { en: { normal: "Which city would you love to visit next?", imposter: "Which beach would you love to visit next?" }, ml: { normal: "അടുത്തതായി സന്ദർശിക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്ന നഗരം ഏതാണ്?", imposter: "അടുത്തതായി സന്ദർശിക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്ന കടൽത്തീരം ഏതാണ്?" } },
+        { en: { normal: "What's your go-to comfort food?", imposter: "What's your go-to snack during travel?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ആശ്വാസഭക്ഷണം ഏതാണ്?", imposter: "യാത്രക്കിടെ നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമുള്ള സ്‌നാക്ക് ഏതാണ്?" } },
+        { en: { normal: "At what time do you usually wake up?", imposter: "At what time do you usually go to bed?" }, ml: { normal: "സാധാരണയായി നിങ്ങൾ എത്ര മണിക്ക് എഴുന്നേൽക്കാറുണ്ട്?", imposter: "സാധാരണയായി നിങ്ങൾ എത്ര മണിക്ക് ഉറങ്ങാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite festival?", imposter: "What's your favorite holiday?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഉത്സവം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട അവധി ദിവസം ഏതാണ്?" } },
+        { en: { normal: "How many languages can you speak?", imposter: "How many countries have you visited?" }, ml: { normal: "നിങ്ങൾക്ക് എത്ര ഭാഷകൾ സംസാരിക്കാൻ കഴിയും?", imposter: "നിങ്ങൾ എത്ര രാജ്യങ്ങളിൽ പോയിട്ടുണ്ടു?" } },
+        { en: { normal: "What's your favorite type of music?", imposter: "What's your favorite type of dance?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സംഗീത തരം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട നൃത്ത തരം ഏതാണ്?" } },
+        { en: { normal: "Which sport do you enjoy watching?", imposter: "Which sport do you enjoy playing?" }, ml: { normal: "നിങ്ങൾക്ക് കാണാൻ ഇഷ്ടമുള്ള കായികം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് കളിക്കാൻ ഇഷ്ടമുള്ള കായികം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite dessert?", imposter: "What's your favorite drink?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട മധുരം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പാനീയം ഏതാണ്?" } },
+        { en: { normal: "What's your dream job?", imposter: "What's your childhood dream?" }, ml: { normal: "നിങ്ങളുടെ സ്വപ്ന ജോലി എന്താണ്?", imposter: "നിങ്ങളുടെ ബാല്യകാല സ്വപ്നം എന്താണ്?" } },
+        { en: { normal: "How many hours do you work each day?", imposter: "How many hours do you spend on hobbies each day?" }, ml: { normal: "ഓരോ ദിവസവും നിങ്ങൾ എത്ര മണിക്കൂർ ജോലി ചെയ്യാറുണ്ട്?", imposter: "ഓരോ ദിവസവും നിങ്ങൾ ഹോബികൾക്ക് എത്ര മണിക്കൂർ ചിലവഴിക്കാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite TV show?", imposter: "What's your favorite movie?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ടി.വി പരിപാടി ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സിനിമ ഏതാണ്?" } },
+        { en: { normal: "What's your favorite color?", imposter: "What's your favorite shade of blue?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട നിറം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട നീല നിറത്തിന്റെ തരം ഏതാണ്?" } },
+        { en: { normal: "Which month is your birthday?", imposter: "Which month do you like the most?" }, ml: { normal: "നിങ്ങളുടെ ജന്മമാസം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമുള്ള മാസം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite outdoor place?", imposter: "What's your favorite indoor place?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഔട്ട്ഡോർ സ്ഥലം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഇൻഡോർ സ്ഥലം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite ice cream flavor?", imposter: "What's your favorite milkshake flavor?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഐസ്‌ക്രീം ഫ്ലേവർ ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട മിൽക്ക്‌ഷേക്ക് ഫ്ലേവർ ഏതാണ്?" } },
+        { en: { normal: "How many siblings do you have?", imposter: "How many cousins do you have?" }, ml: { normal: "നിങ്ങൾക്ക് എത്ര സഹോദരങ്ങളുണ്ട്?", imposter: "നിങ്ങൾക്ക് എത്ര кузിനുകളുണ്ട്?" } },
+        { en: { normal: "What's your favorite mode of transport?", imposter: "What's your least favorite mode of transport?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഗതാഗത മാർഗം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമില്ലാത്ത ഗതാഗത മാർഗം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite hobby?", imposter: "What's a hobby you wish to try?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഹോബി ഏതാണ്?", imposter: "നിങ്ങൾ പരീക്ഷിക്കാൻ ആഗ്രഹിക്കുന്ന ഒരു ഹോബി ഏതാണ്?" } },
+        { en: { normal: "How many books have you read this year?", imposter: "How many movies have you watched this year?" }, ml: { normal: "ഈ വർഷം നിങ്ങൾ എത്ര പുസ്തകങ്ങൾ വായിച്ചു?", imposter: "ഈ വർഷം നിങ്ങൾ എത്ര സിനിമകൾ കണ്ടു?" } },
+        { en: { normal: "What's your favorite clothing brand?", imposter: "What's your favorite shoe brand?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട വസ്ത്ര ബ്രാൻഡ് ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ചെരുപ്പ് ബ്രാൻഡ് ഏതാണ്?" } },
+        { en: { normal: "Which subject did you enjoy most in school?", imposter: "Which subject did you dislike most in school?" }, ml: { normal: "സ്കൂളിൽ നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമായ വിഷയമെന്താണ്?", imposter: "സ്കൂളിൽ നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമില്ലാത്ത വിഷയമെന്താണ്?" } },
+        { en: { normal: "What's your favorite season?", imposter: "What's your least favorite season?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ঋതു ഏതാണ്?", imposter: "നിങ്ങളുടെ ഏറ്റവും ഇഷ്ടമില്ലാത്ത ঋതു ഏതാണ്?" } },
+        { en: { normal: "How many hours do you spend on your phone daily?", imposter: "How many hours do you spend reading daily?" }, ml: { normal: "ദിവസേന നിങ്ങൾ എത്ര മണിക്കൂർ ഫോണിൽ ചിലവഴിക്കാറുണ്ട്?", imposter: "ദിവസേന നിങ്ങൾ എത്ര മണിക്കൂർ വായിക്കാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite tourist spot in your country?", imposter: "What's your favorite park in your country?" }, ml: { normal: "നിങ്ങളുടെ രാജ്യത്തിലെ പ്രിയപ്പെട്ട വിനോദസഞ്ചാര കേന്ദ്രം ഏതാണ്?", imposter: "നിങ്ങളുടെ രാജ്യത്തിലെ പ്രിയപ്പെട്ട പാർക്ക് ഏതാണ്?" } },
+        { en: { normal: "What's your favorite childhood cartoon?", imposter: "What's your favorite animated movie?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ബാല്യകാല കാർട്ടൂൺ ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ആനിമേറ്റഡ് സിനിമ ഏതാണ്?" } },
+        { en: { normal: "What's your favorite animal?", imposter: "What's your favorite bird?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട മൃഗം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പക്ഷി ഏതാണ്?" } },
+        { en: { normal: "How many hours do you travel in a week?", imposter: "How many hours do you work in a week?" }, ml: { normal: "ഒരു ആഴ്ചയിൽ നിങ്ങൾ എത്ര മണിക്കൂർ യാത്ര ചെയ്യാറുണ്ട്?", imposter: "ഒരു ആഴ്ചയിൽ നിങ്ങൾ എത്ര മണിക്കൂർ ജോലി ചെയ്യാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite type of weather?", imposter: "What's your favorite time of day?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട കാലാവസ്ഥ ഏതാണ്?", imposter: "ദിവസത്തിലെ നിങ്ങളുടെ പ്രിയപ്പെട്ട സമയം ഏതാണ്?" } },
+        { en: { normal: "Which app do you use most?", imposter: "Which website do you use most?" }, ml: { normal: "നിങ്ങൾ ഏറ്റവും കൂടുതൽ ഉപയോഗിക്കുന്ന ആപ്പ് ഏതാണ്?", imposter: "നിങ്ങൾ ഏറ്റവും കൂടുതൽ ഉപയോഗിക്കുന്ന വെബ്സൈറ്റ് ഏതാണ്?" } },
+        { en: { normal: "What's your favorite snack?", imposter: "What's your favorite breakfast dish?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സ്‌നാക്ക് ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പ്രാതൽ വിഭവം ഏതാണ്?" } },
+        { en: { normal: "How many friends do you meet weekly?", imposter: "How many family members do you meet weekly?" }, ml: { normal: "ഓരോ ആഴ്ചയിൽ നിങ്ങൾ എത്ര സുഹൃത്തുക്കളെ കാണാറുണ്ട്?", imposter: "ഓരോ ആഴ്ചയിൽ നിങ്ങൾ എത്ര കുടുംബാംഗങ്ങളെ കാണാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite subject to talk about?", imposter: "What's your least favorite subject to talk about?" }, ml: { normal: "നിങ്ങൾക്ക് സംസാരിക്കാൻ ഏറ്റവും ഇഷ്ടമുള്ള വിഷയം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് സംസാരിക്കാൻ ഏറ്റവും ഇഷ്ടമില്ലാത്ത വിഷയം ഏതാണ്?" } },
+        { en: { normal: "Which festival do you celebrate most?", imposter: "Which festival do you celebrate least?" }, ml: { normal: "നിങ്ങൾ കൂടുതലായി ആഘോഷിക്കുന്ന ഉത്സവം ഏതാണ്?", imposter: "നിങ്ങൾ ഏറ്റവും കുറച്ച് ആഘോഷിക്കുന്ന ഉത്സവം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite sweet?", imposter: "What's your favorite spicy food?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട മിഠായി ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട കഠിന ഭക്ഷണം ഏതാണ്?" } },
+        { en: { normal: "How many hours do you spend outside daily?", imposter: "How many hours do you spend inside daily?" }, ml: { normal: "ദിവസേന നിങ്ങൾ എത്ര മണിക്കൂർ പുറത്തു ചിലവഴിക്കാറുണ്ട്?", imposter: "ദിവസേന നിങ്ങൾ എത്ര മണിക്കൂർ അകത്തു ചിലവഴിക്കാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite juice?", imposter: "What's your favorite smoothie?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ജ്യൂസ് ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സ്മൂത്തി ഏതാണ്?" } },
+        { en: { normal: "Which mountain would you like to visit?", imposter: "Which river would you like to visit?" }, ml: { normal: "നിങ്ങൾ സന്ദർശിക്കാൻ ആഗ്രഹിക്കുന്ന മല ഏതാണ്?", imposter: "നിങ്ങൾ സന്ദർശിക്കാൻ ആഗ്രഹിക്കുന്ന നദി ഏതാണ്?" } },
+        { en: { normal: "What's your favorite school memory?", imposter: "What's your favorite family memory?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സ്കൂൾ ഓർമ്മ ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട കുടുംബ ഓർമ്മ ഏതാണ്?" } },
+        { en: { normal: "How many times do you eat out weekly?", imposter: "How many times do you cook weekly?" }, ml: { normal: "ഒരു ആഴ്ചയിൽ നിങ്ങൾ എത്ര തവണ പുറത്തു ഭക്ഷണം കഴിക്കാറുണ്ട്?", imposter: "ഒരു ആഴ്ചയിൽ നിങ്ങൾ എത്ര തവണ പാചകം ചെയ്യാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite game to play?", imposter: "What's your favorite game to watch?" }, ml: { normal: "നിങ്ങൾക്ക് കളിക്കാൻ ഏറ്റവും ഇഷ്ടമുള്ള ഗെയിം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് കാണാൻ ഏറ്റവും ഇഷ്ടമുള്ള ഗെയിം ഏതാണ്?" } }
+    ],
+
+    4: [
+        { en: { normal: "How many hours of sleep do you usually get?", imposter: "How many cups of tea do you drink daily?" }, ml: { normal: "സാധാരണയായി നിങ്ങൾ എത്ര മണിക്കൂർ ഉറങ്ങാറുണ്ട്?", imposter: "നിങ്ങൾ ദിവസം എത്ര കപ്പ് ചായ കുടിക്കാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite fruit?", imposter: "What's your favorite vegetable?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പഴം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പച്ചക്കറി ഏതാണ്?" } },
+        { en: { normal: "Which city would you love to visit next?", imposter: "Which beach would you love to visit next?" }, ml: { normal: "അടുത്തതായി സന്ദർശിക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്ന നഗരം ഏതാണ്?", imposter: "അടുത്തതായി സന്ദർശിക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്ന കടൽത്തീരം ഏതാണ്?" } },
+        { en: { normal: "What's your go-to comfort food?", imposter: "What's your go-to snack during travel?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ആശ്വാസഭക്ഷണം ഏതാണ്?", imposter: "യാത്രക്കിടെ നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമുള്ള സ്‌നാക്ക് ഏതാണ്?" } },
+        { en: { normal: "At what time do you usually wake up?", imposter: "At what time do you usually go to bed?" }, ml: { normal: "സാധാരണയായി നിങ്ങൾ എത്ര മണിക്ക് എഴുന്നേൽക്കാറുണ്ട്?", imposter: "സാധാരണയായി നിങ്ങൾ എത്ര മണിക്ക് ഉറങ്ങാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite festival?", imposter: "What's your favorite holiday?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഉത്സവം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട അവധി ദിവസം ഏതാണ്?" } },
+        { en: { normal: "How many languages can you speak?", imposter: "How many countries have you visited?" }, ml: { normal: "നിങ്ങൾക്ക് എത്ര ഭാഷകൾ സംസാരിക്കാൻ കഴിയും?", imposter: "നിങ്ങൾ എത്ര രാജ്യങ്ങളിൽ പോയിട്ടുണ്ടു?" } },
+        { en: { normal: "What's your favorite type of music?", imposter: "What's your favorite type of dance?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സംഗീത തരം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട നൃത്ത തരം ഏതാണ്?" } },
+        { en: { normal: "Which sport do you enjoy watching?", imposter: "Which sport do you enjoy playing?" }, ml: { normal: "നിങ്ങൾക്ക് കാണാൻ ഇഷ്ടമുള്ള കായികം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് കളിക്കാൻ ഇഷ്ടമുള്ള കായികം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite dessert?", imposter: "What's your favorite drink?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട മധുരം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പാനീയം ഏതാണ്?" } },
+        { en: { normal: "What's your dream job?", imposter: "What's your childhood dream?" }, ml: { normal: "നിങ്ങളുടെ സ്വപ്ന ജോലി എന്താണ്?", imposter: "നിങ്ങളുടെ ബാല്യകാല സ്വപ്നം എന്താണ്?" } },
+        { en: { normal: "How many hours do you work each day?", imposter: "How many hours do you spend on hobbies each day?" }, ml: { normal: "ഓരോ ദിവസവും നിങ്ങൾ എത്ര മണിക്കൂർ ജോലി ചെയ്യാറുണ്ട്?", imposter: "ഓരോ ദിവസവും നിങ്ങൾ ഹോബികൾക്ക് എത്ര മണിക്കൂർ ചിലവഴിക്കാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite TV show?", imposter: "What's your favorite movie?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ടി.വി പരിപാടി ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സിനിമ ഏതാണ്?" } },
+        { en: { normal: "What's your favorite color?", imposter: "What's your favorite shade of blue?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട നിറം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട നീല നിറത്തിന്റെ തരം ഏതാണ്?" } },
+        { en: { normal: "Which month is your birthday?", imposter: "Which month do you like the most?" }, ml: { normal: "നിങ്ങളുടെ ജന്മമാസം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമുള്ള മാസം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite outdoor place?", imposter: "What's your favorite indoor place?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഔട്ട്ഡോർ സ്ഥലം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഇൻഡോർ സ്ഥലം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite ice cream flavor?", imposter: "What's your favorite milkshake flavor?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഐസ്‌ക്രീം ഫ്ലേവർ ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട മിൽക്ക്‌ഷേക്ക് ഫ്ലേവർ ഏതാണ്?" } },
+        { en: { normal: "How many siblings do you have?", imposter: "How many cousins do you have?" }, ml: { normal: "നിങ്ങൾക്ക് എത്ര സഹോദരങ്ങളുണ്ട്?", imposter: "നിങ്ങൾക്ക് എത്ര кузിനുകളുണ്ട്?" } },
+        { en: { normal: "What's your favorite mode of transport?", imposter: "What's your least favorite mode of transport?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഗതാഗത മാർഗം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമില്ലാത്ത ഗതാഗത മാർഗം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite hobby?", imposter: "What's a hobby you wish to try?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ഹോബി ഏതാണ്?", imposter: "നിങ്ങൾ പരീക്ഷിക്കാൻ ആഗ്രഹിക്കുന്ന ഒരു ഹോബി ഏതാണ്?" } },
+        { en: { normal: "How many books have you read this year?", imposter: "How many movies have you watched this year?" }, ml: { normal: "ഈ വർഷം നിങ്ങൾ എത്ര പുസ്തകങ്ങൾ വായിച്ചു?", imposter: "ഈ വർഷം നിങ്ങൾ എത്ര സിനിമകൾ കണ്ടു?" } },
+        { en: { normal: "What's your favorite clothing brand?", imposter: "What's your favorite shoe brand?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട വസ്ത്ര ബ്രാൻഡ് ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ചെരുപ്പ് ബ്രാൻഡ് ഏതാണ്?" } },
+        { en: { normal: "Which subject did you enjoy most in school?", imposter: "Which subject did you dislike most in school?" }, ml: { normal: "സ്കൂളിൽ നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമായ വിഷയമെന്താണ്?", imposter: "സ്കൂളിൽ നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടമില്ലാത്ത വിഷയമെന്താണ്?" } },
+        { en: { normal: "What's your favorite season?", imposter: "What's your least favorite season?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ঋതു ഏതാണ്?", imposter: "നിങ്ങളുടെ ഏറ്റവും ഇഷ്ടമില്ലാത്ത ঋതു ഏതാണ്?" } },
+        { en: { normal: "How many hours do you spend on your phone daily?", imposter: "How many hours do you spend reading daily?" }, ml: { normal: "ദിവസേന നിങ്ങൾ എത്ര മണിക്കൂർ ഫോണിൽ ചിലവഴിക്കാറുണ്ട്?", imposter: "ദിവസേന നിങ്ങൾ എത്ര മണിക്കൂർ വായിക്കാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite tourist spot in your country?", imposter: "What's your favorite park in your country?" }, ml: { normal: "നിങ്ങളുടെ രാജ്യത്തിലെ പ്രിയപ്പെട്ട വിനോദസഞ്ചാര കേന്ദ്രം ഏതാണ്?", imposter: "നിങ്ങളുടെ രാജ്യത്തിലെ പ്രിയപ്പെട്ട പാർക്ക് ഏതാണ്?" } },
+        { en: { normal: "What's your favorite childhood cartoon?", imposter: "What's your favorite animated movie?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ബാല്യകാല കാർട്ടൂൺ ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ആനിമേറ്റഡ് സിനിമ ഏതാണ്?" } },
+        { en: { normal: "What's your favorite animal?", imposter: "What's your favorite bird?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട മൃഗം ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പക്ഷി ഏതാണ്?" } },
+        { en: { normal: "How many hours do you travel in a week?", imposter: "How many hours do you work in a week?" }, ml: { normal: "ഒരു ആഴ്ചയിൽ നിങ്ങൾ എത്ര മണിക്കൂർ യാത്ര ചെയ്യാറുണ്ട്?", imposter: "ഒരു ആഴ്ചയിൽ നിങ്ങൾ എത്ര മണിക്കൂർ ജോലി ചെയ്യാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite type of weather?", imposter: "What's your favorite time of day?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട കാലാവസ്ഥ ഏതാണ്?", imposter: "ദിവസത്തിലെ നിങ്ങളുടെ പ്രിയപ്പെട്ട സമയം ഏതാണ്?" } },
+        { en: { normal: "Which app do you use most?", imposter: "Which website do you use most?" }, ml: { normal: "നിങ്ങൾ ഏറ്റവും കൂടുതൽ ഉപയോഗിക്കുന്ന ആപ്പ് ഏതാണ്?", imposter: "നിങ്ങൾ ഏറ്റവും കൂടുതൽ ഉപയോഗിക്കുന്ന വെബ്സൈറ്റ് ഏതാണ്?" } },
+        { en: { normal: "What's your favorite snack?", imposter: "What's your favorite breakfast dish?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സ്‌നാക്ക് ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട പ്രാതൽ വിഭവം ഏതാണ്?" } },
+        { en: { normal: "How many friends do you meet weekly?", imposter: "How many family members do you meet weekly?" }, ml: { normal: "ഓരോ ആഴ്ചയിൽ നിങ്ങൾ എത്ര സുഹൃത്തുക്കളെ കാണാറുണ്ട്?", imposter: "ഓരോ ആഴ്ചയിൽ നിങ്ങൾ എത്ര കുടുംബാംഗങ്ങളെ കാണാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite subject to talk about?", imposter: "What's your least favorite subject to talk about?" }, ml: { normal: "നിങ്ങൾക്ക് സംസാരിക്കാൻ ഏറ്റവും ഇഷ്ടമുള്ള വിഷയം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് സംസാരിക്കാൻ ഏറ്റവും ഇഷ്ടമില്ലാത്ത വിഷയം ഏതാണ്?" } },
+        { en: { normal: "Which festival do you celebrate most?", imposter: "Which festival do you celebrate least?" }, ml: { normal: "നിങ്ങൾ കൂടുതലായി ആഘോഷിക്കുന്ന ഉത്സവം ഏതാണ്?", imposter: "നിങ്ങൾ ഏറ്റവും കുറച്ച് ആഘോഷിക്കുന്ന ഉത്സവം ഏതാണ്?" } },
+        { en: { normal: "What's your favorite sweet?", imposter: "What's your favorite spicy food?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട മിഠായി ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട കഠിന ഭക്ഷണം ഏതാണ്?" } },
+        { en: { normal: "How many hours do you spend outside daily?", imposter: "How many hours do you spend inside daily?" }, ml: { normal: "ദിവസേന നിങ്ങൾ എത്ര മണിക്കൂർ പുറത്തു ചിലവഴിക്കാറുണ്ട്?", imposter: "ദിവസേന നിങ്ങൾ എത്ര മണിക്കൂർ അകത്തു ചിലവഴിക്കാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite juice?", imposter: "What's your favorite smoothie?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട ജ്യൂസ് ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സ്മൂത്തി ഏതാണ്?" } },
+        { en: { normal: "Which mountain would you like to visit?", imposter: "Which river would you like to visit?" }, ml: { normal: "നിങ്ങൾ സന്ദർശിക്കാൻ ആഗ്രഹിക്കുന്ന മല ഏതാണ്?", imposter: "നിങ്ങൾ സന്ദർശിക്കാൻ ആഗ്രഹിക്കുന്ന നദി ഏതാണ്?" } },
+        { en: { normal: "What's your favorite school memory?", imposter: "What's your favorite family memory?" }, ml: { normal: "നിങ്ങളുടെ പ്രിയപ്പെട്ട സ്കൂൾ ഓർമ്മ ഏതാണ്?", imposter: "നിങ്ങളുടെ പ്രിയപ്പെട്ട കുടുംബ ഓർമ്മ ഏതാണ്?" } },
+        { en: { normal: "How many times do you eat out weekly?", imposter: "How many times do you cook weekly?" }, ml: { normal: "ഒരു ആഴ്ചയിൽ നിങ്ങൾ എത്ര തവണ പുറത്തു ഭക്ഷണം കഴിക്കാറുണ്ട്?", imposter: "ഒരു ആഴ്ചയിൽ നിങ്ങൾ എത്ര തവണ പാചകം ചെയ്യാറുണ്ട്?" } },
+        { en: { normal: "What's your favorite game to play?", imposter: "What's your favorite game to watch?" }, ml: { normal: "നിങ്ങൾക്ക് കളിക്കാൻ ഏറ്റവും ഇഷ്ടമുള്ള ഗെയിം ഏതാണ്?", imposter: "നിങ്ങൾക്ക് കാണാൻ ഏറ്റവും ഇഷ്ടമുള്ള ഗെയിം ഏതാണ്?" } }
+    ]
+};
+
 
         function toggleLanguage() {
             currentLanguage = currentLanguage === 'en' ? 'ml' : 'en';
